@@ -28,10 +28,13 @@
                         <a class="nav-link {% if current_menu is defined and current_menu == 'admin' %}active{%endif%}" href="{{ path('user_index') }}">Admin</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link {% if current_menu is defined and current_menu == 'sign_up' %}active{%endif%}" href="{{ path('sign_up') }}">Sign up</a>
+                        <a class="nav-link {% if current_menu is defined and current_menu == 'sign_up' %}active{%endif%}" {% if is_granted('IS_AUTHENTICATED_FULLY') %}hidden{%endif%} href="{{ path('sign_up') }}">Sign up</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link {% if current_menu is defined and current_menu == 'sign_in' %}active{%endif%}" href="{{ path('sign_in') }}">Sign in</a>
+                        <a class="nav-link {% if current_menu is defined and current_menu == 'sign_in' %}active{%endif%}" {% if is_granted('IS_AUTHENTICATED_FULLY') %}hidden{%endif%} href="{{ path('sign_in') }}">Sign in</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" {% if is_granted('IS_AUTHENTICATED_FULLY') %}null;{% else %}hidden{%endif%}   href="{{ path('sign_out') }}">Sign out</a>
                     </li>
                 </ul>
             </div>

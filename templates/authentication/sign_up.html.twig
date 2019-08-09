@@ -1,8 +1,25 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello !{% endblock %}
+{% block title %}Sign up{% endblock %}
+
 
 {% block body %}
+	{% if is_granted('IS_AUTHENTICATED_FULLY') %}
 
+		<p>You are already authenticated ! Please logout to create an other account.</p>
+
+	{% else %}
+
+		{{ form_start(form) }}
+		{{ form_row(form.firstName) }}
+		{{ form_row(form.lastName) }}
+		{{ form_row(form.email) }}
+		{{ form_row(form.birthDate) }}
+		{{ form_row(form.password.first) }}
+		{{ form_row(form.password.second) }}
+		{{ form_row(form.submit) }}
+		{{ form_end(form) }}
+
+	{%endif%}
 
 {% endblock %}

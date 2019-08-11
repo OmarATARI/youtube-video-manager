@@ -50,6 +50,15 @@
                         <td>Description</td>
                         <td>{{ video.description }}</td>
                     </tr>
+                    <tr>
+                        <td>Author</td>
+                        <td>{{ video.author.firstName }} {{ video.author.lastName }}</td>
+                    </tr>
+                    <tr>
+                        <td>Video:</td>
+                        <td><iframe width="560" height="315" src="https://www.youtube.com/embed/{{ yt_key[video.title] }}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>'
+                        </td>
+                    </tr>
                 </table>
 
             </div>

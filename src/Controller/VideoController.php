@@ -53,8 +53,12 @@ class VideoController extends AbstractController
      */
     public function show(Video $video): Response
     {
+        $url = $video->getLink();
+        $youtubeKey = substr($url, strpos($url, '?v=') + 3);
+
         return $this->render('video/show.html.twig', [
             'video' => $video,
+            'yt_key' => $youtubeKey,
         ]);
     }
 

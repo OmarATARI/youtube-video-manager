@@ -3,6 +3,7 @@
 namespace App\Form;
 
 use App\Entity\Category;
+use App\Entity\User;
 use App\Entity\Video;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
@@ -21,7 +22,13 @@ class VideoType extends AbstractType
                 'class' => Category::class,
                 'choice_label' => 'name'
             ])
-            ->add('author')
+            ->add('Author', EntityType::class, [
+                'class' => User::class,
+                'choice_label' =>  function($user, $key, $index) {
+                    /** @var User $user */
+                    return $user->getFirstName() . ' ' . $user->getLastName();
+                },
+            ])
         ;
     }
 

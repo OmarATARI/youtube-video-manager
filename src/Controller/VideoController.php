@@ -22,7 +22,6 @@ class VideoController extends AbstractController
     {
         return $this->render('video/index.html.twig', [
             'videos' => $videoRepository->findAll(),
-            'current_menu' => 'videos',
         ]);
     }
 

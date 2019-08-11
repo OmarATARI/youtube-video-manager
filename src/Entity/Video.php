@@ -37,9 +37,9 @@ class Video
     private $category;
 
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\Author", inversedBy="Videos")
+     * @ORM\ManyToOne(targetEntity="App\Entity\User", inversedBy="videos")
      */
-    private $author;
+    private $Author;
 
     public function getId(): ?int
     {
@@ -94,14 +94,14 @@ class Video
         return $this;
     }
 
-    public function getAuthor(): ?Author
+    public function getAuthor(): ?User
     {
-        return $this->author;
+        return $this->Author;
     }
 
-    public function setAuthor(?Author $author): self
+    public function setAuthor(?User $Author): self
     {
-        $this->author = $author;
+        $this->Author = $Author;
 
         return $this;
     }

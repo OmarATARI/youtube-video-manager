@@ -2,6 +2,7 @@
 
 namespace App\Entity;
 
+use Doctrine\DBAL\Types\StringType;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -104,5 +105,11 @@ class Video
         $this->Author = $Author;
 
         return $this;
+    }
+
+    public function getYtKey() : String
+    {
+        $url = $this->getLink();
+        return substr($url, strpos($url, '?v=') + 3);
     }
 }

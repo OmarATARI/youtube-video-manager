@@ -54,16 +54,8 @@ class CategoryController extends AbstractController
      */
     public function show(Category $category): Response
     {
-        $keys = array();
-        $videos = $category->getVideos();
-        foreach($videos as $video)
-        {
-            $url = $video->getLink();
-            $keys[$video->getTitle()] = substr($url, strpos($url, '?v=') + 3);
-        }
         return $this->render('category/show.html.twig', [
             'category' => $category,
-            'yt_key' => $keys,
         ]);
     }
 

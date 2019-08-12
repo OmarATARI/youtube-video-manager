@@ -4,4 +4,37 @@
 
 {% block body %}
 
+    <div class="jumbotron">
+        <h1>Welcome on Videohub !</h1>
+    </div>
+    <div class="container mt-4">
+        {% for video in videos %}
+            <div class="container mt-4">
+                <div class="col-md-8">
+
+                    <h2>{{ video.title }} :</h2>
+                    <table class="table table-striped">
+                        <tr>
+                            <td>The youtube video link</td>
+                            <td>{{ video.link }}</td>
+                        </tr>
+                        <tr>
+                            <td>Description</td>
+                            <td>{{ video.description }}</td>
+                        </tr>
+                        <tr>
+                            <td>Author</td>
+                            <td>{{ video.author.firstName }} {{ video.author.lastName }}</td>
+                        </tr>
+                        <tr>
+                            <td>Video:</td>
+                            <td><iframe width="560" height="315" src="https://www.youtube.com/embed/{{ video.YtKey }}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>'
+                            </td>
+                        </tr>
+                    </table>
+
+                </div>
+            </div>
+        {% endfor %}
+    </div>
 {% endblock %}
